@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: evasion-backend
+    runtime: node
+    repo: https://github.com/Snasri/Evasion-Tunisienne
+    buildCommand: npm install && npm run build --prefix server
+    startCommand: npm run start --prefix server
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: PORT
+        value: 3001
+      - key: NODE_ENV
+        value: production
