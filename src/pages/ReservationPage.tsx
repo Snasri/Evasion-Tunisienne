@@ -10,6 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { evasionTunisienne as prog } from "@/content/evasionTunisienne";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
 const ALLOWED_DATES = [
   new Date(2026, 4, 1),  new Date(2026, 4, 2),  new Date(2026, 4, 3),
   new Date(2026, 4, 8),  new Date(2026, 4, 9),  new Date(2026, 4, 10),
@@ -30,6 +32,7 @@ const ReservationPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
+  const [availability, setAvailability] = useState<Record<string, number>>({});
   const [formData, setFormData] = useState({
     startDate: "",
     participants: 1,
@@ -42,6 +45,13 @@ const ReservationPage = () => {
     acceptTerms: false,
   });
   const [selectedDay, setSelectedDay] = useState<Date | undefined>(undefined);
+
+  useState(() => {
+    fetch(`${API_URL}/api/sessions/availability`)
+      .then(res => res.json())
+      .then(data => setAvailability(data))
+      .catch(console.error);
+  });
 
   const basePrice = prog.price * formData.participants;
   const totalPrice = Math.max(0, basePrice - discount);
@@ -71,7 +81,7 @@ const ReservationPage = () => {
     setIsSubmitting(true);
 
     try {
-      const resReservation = await fetch('http://localhost:3001/api/reservations', {
+      const resReservation = await fetch(`${API_URL}/api/reservations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -144,9 +154,9 @@ const ReservationPage = () => {
                 
                 {/* Section 1 : Dates */}
                 <div>
-                  <h2 className="font-serif text-3xl text-primary mb-8 border-b border-border pb-4">1. Dates du séjour</h2>
+                  <h2 className="font-serif text-3xl text-primary mb-8 border-b border-border pb-4">1. Dates de la session (3 Jours)</h2>
                   <div className="bg-background p-6 lg:p-10 border border-border">
-                    <p className="text-muted-foreground mb-6">Sélectionnez la date de début de votre retraite ({prog.shortDuration}).</p>
+                    <p className="text-muted-foreground mb-6">Sélectionnez la date de début de votre retraite. Le séjour complet s'étend sur {prog.shortDuration}. Les dates grisées n'ont pas assez de places disponibles pour {formData.participants} personne(s).</p>
                     <div className="flex justify-center">
                       <style>{`
                         .rdp { --rdp-cell-size: 42px; --rdp-accent-color: hsl(var(--primary)); --rdp-background-color: hsl(var(--primary)/0.1); margin: 0; }
@@ -161,7 +171,12 @@ const ReservationPage = () => {
                         defaultMonth={new Date(2026, 4, 1)}
                         fromMonth={new Date(2026, 4, 1)}
                         toMonth={new Date(2026, 5, 30)}
-                        disabled={(date) => !isDateAllowed(date)}
+                        disabled={(date) => {
+                          if (!isDateAllowed(date)) return true;
+                          const d = date.toISOString().split('T')[0];
+                          const spots = availability[d] !== undefined ? availability[d] : 13;
+                          return spots < formData.participants;
+                        }}
                         modifiers={{ available: ALLOWED_DATES }}
                         modifiersStyles={{ available: { fontWeight: 600, color: 'hsl(var(--primary))' } }}
                         onSelect={(day) => {

@@ -24,6 +24,15 @@ app.get('/api/health', (req, res) => {
 import apiRoutes from './routes/api.js';
 app.use('/api', apiRoutes);
 
+// Initialisation du serveur
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`[BACKEND] Serveur démarré sur le port ${port}`);
+  console.log(`[BACKEND] Routes API prêtes sur http://localhost:${port}/api`);
+}).on('error', (err) => {
+  console.error('[BACKEND] Erreur au démarrage du serveur:', err);
+});
+
+// Empêcher l'arrêt immédiat pour débogage si nécessaire
+process.on('uncaughtException', (err) => {
+  console.error('[BACKEND] Erreur non gérée:', err);
 });
