@@ -340,7 +340,7 @@ const ReservationPage = () => {
                       <div>
                         <p className="text-sm text-muted-foreground uppercase tracking-widest mb-1">Arrivée (Vendredi)</p>
                         <p className="text-foreground font-medium">
-                          {new Date(formData.startDate).toLocaleDateString("fr-FR", {
+                          {new Date(formData.startDate + 'T00:00:00').toLocaleDateString("fr-FR", {
                             day: "numeric", month: "long", year: "numeric"
                           })}
                         </p>
@@ -349,7 +349,7 @@ const ReservationPage = () => {
                         <p className="text-sm text-muted-foreground uppercase tracking-widest mb-1">Départ (Dimanche)</p>
                         <p className="text-foreground font-medium">
                           {(() => {
-                            const date = new Date(formData.startDate);
+                            const date = new Date(formData.startDate + 'T00:00:00');
                             date.setDate(date.getDate() + 2);
                             return date.toLocaleDateString("fr-FR", {
                               day: "numeric", month: "long", year: "numeric"
