@@ -149,7 +149,7 @@ const AProposPage = () => {
                     <img src={team1} alt="Expert" className="w-full h-[300px] object-cover hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="overflow-hidden">
-                    <img src={team2} alt="Soin" className="w-full h-[250px] object-cover hover:scale-105 transition-transform duration-700" />
+                    <img src={ventouses} alt="Soin aux ventouses" className="w-full h-[250px] object-cover hover:scale-105 transition-transform duration-700" />
                   </div>
                 </div>
                 <div className="space-y-4">
@@ -213,11 +213,11 @@ const AProposPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
               { src: venueExterior, alt: "Extérieur" },
-              { src: ventouses, alt: "Soins aux ventouses" },
               { src: venuePool, alt: "Piscine" },
               { src: venueSeaview, alt: "Vue mer" },
               { src: maree1, alt: "Chambre 1" },
               { src: maree2, alt: "Chambre 2" },
+              { src: maree3, alt: "Espace détente" },
             ].map((img, index) => (
               <motion.div
                 key={img.alt + index}
