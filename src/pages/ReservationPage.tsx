@@ -184,7 +184,10 @@ const ReservationPage = () => {
                         modifiersStyles={{ available: { fontWeight: 600, color: 'hsl(var(--primary))' } }}
                         onSelect={(day) => {
                           setSelectedDay(day);
-                          setFormData({ ...formData, startDate: day ? day.toISOString().split('T')[0] : '' });
+                          const dateStr = day ? 
+                            `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}` : 
+                            '';
+                          setFormData({ ...formData, startDate: dateStr });
                         }}
                         locale={undefined}
                       />
@@ -340,7 +343,7 @@ const ReservationPage = () => {
                       <div>
                         <p className="text-sm text-muted-foreground uppercase tracking-widest mb-1">Arrivée (Vendredi)</p>
                         <p className="text-foreground font-medium">
-                          {new Date(formData.startDate + 'T00:00:00').toLocaleDateString("fr-FR", {
+                          {new Date(formData.startDate + 'T12:00:00').toLocaleDateString("fr-FR", {
                             day: "numeric", month: "long", year: "numeric"
                           })}
                         </p>
@@ -349,7 +352,7 @@ const ReservationPage = () => {
                         <p className="text-sm text-muted-foreground uppercase tracking-widest mb-1">Départ (Dimanche)</p>
                         <p className="text-foreground font-medium">
                           {(() => {
-                            const date = new Date(formData.startDate + 'T00:00:00');
+                            const date = new Date(formData.startDate + 'T12:00:00');
                             date.setDate(date.getDate() + 2);
                             return date.toLocaleDateString("fr-FR", {
                               day: "numeric", month: "long", year: "numeric"
