@@ -68,7 +68,17 @@ router.post('/reservations', async (req, res) => {
         res.status(201).json(reservation);
     } catch (error) {
         console.error('Error creating reservation:', error);
-        res.status(500).json({ error: 'Failed to create reservation' });
+        res.status(500).json({ error: 'Failed to create reservation', message: error.message });
+    }
+});
+
+// Diagnostic endpoint
+router.get('/debug/db', async (req, res) => {
+    try {
+        await prisma.$queryRaw`SELECT 1`;
+        res.json({ status: 'ok', database: 'connected' });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: error.message, stack: error.stack });
     }
 });
 
