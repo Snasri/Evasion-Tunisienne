@@ -200,7 +200,7 @@ const AProposPage = () => {
             className="text-center max-w-3xl mx-auto mb-16 space-y-4"
           >
             <h2 className="font-serif text-3xl lg:text-4xl text-primary">
-              La Marée Village, Raf Raf
+              Le domaine de La Marée Village
             </h2>
             <div className="w-16 h-[1px] bg-primary/30 mx-auto mb-6"></div>
             <p className="text-muted-foreground leading-relaxed text-lg">
