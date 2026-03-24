@@ -75,10 +75,10 @@ router.post('/reservations', async (req, res) => {
 // Diagnostic endpoint
 router.get('/debug/db', async (req, res) => {
     try {
-        await prisma.$queryRaw`SELECT 1`;
-        res.json({ status: 'ok', database: 'connected' });
+        const count = await prisma.reservation.count();
+        res.json({ status: 'ok', database: 'connected', reservationCount: count });
     } catch (error) {
-        res.status(500).json({ status: 'error', message: error.message, stack: error.stack });
+        res.status(500).json({ status: 'error', message: error.message, code: error.code, stack: error.stack });
     }
 });
 
