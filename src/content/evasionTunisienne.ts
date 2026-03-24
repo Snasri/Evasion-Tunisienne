@@ -6,7 +6,7 @@ export const evasionTunisienne = {
   name: "Évasion tunisienne",
   shortDuration: "3 jours / 2 nuits",
   duration: "Du vendredi au dimanche",
-  price: 1090,
+  price: 1190,
   priceDetails: "Séjour tout inclus",
   image: spaTreatment,
   excerpt:
@@ -21,6 +21,8 @@ export const evasionTunisienne = {
   ],
   included: [
     "Transfert aéroport aller-retour",
+    "Hébergement premium en chambre partagée ou individuelle",
+    "Petit déjeuner inclus (et buffet complet)",
     "Petit buffet d'accueil avec jus de fruit et petits gâteaux",
     "Attribution des chambres et présentation de l'équipe",
     "Balades sur la plage, quartier libre et temps de récupération",

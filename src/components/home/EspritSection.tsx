@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export const EspritSection = () => {
   return (
@@ -43,9 +44,9 @@ export const EspritSection = () => {
               className="w-full h-[350px] object-cover"
             />
             <div className="text-right">
-              <a href="#programme" className="inline-block border border-primary text-primary px-8 py-3 uppercase tracking-widest text-sm hover:bg-primary hover:text-white transition-colors duration-300">
-                Découvrir
-              </a>
+              <Link to="/reservation" className="inline-block border border-primary text-primary px-8 py-3 uppercase tracking-widest text-sm hover:bg-primary hover:text-white transition-colors duration-300">
+                Découvrir le programme
+              </Link>
             </div>
           </motion.div>
         </div>

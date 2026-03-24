@@ -49,8 +49,8 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            <Link to="/stages" className="inline-block text-white/90 hover:text-white uppercase tracking-widest text-xs border-b border-white/40 hover:border-white transition-colors pb-2">
-              Découvrir nos séjours
+            <Link to="/reservation" className="inline-block bg-primary text-white px-8 py-4 uppercase tracking-[0.2em] text-xs hover:bg-primary/90 transition-all font-medium">
+              Réserver mon séjour
             </Link>
           </motion.div>
       </div>

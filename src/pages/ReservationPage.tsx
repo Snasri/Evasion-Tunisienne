@@ -13,11 +13,13 @@ import { evasionTunisienne as prog } from "@/content/evasionTunisienne";
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 const ALLOWED_DATES = [
-  new Date(2026, 4, 1),  new Date(2026, 4, 2),  new Date(2026, 4, 3),
-  new Date(2026, 4, 8),  new Date(2026, 4, 9),  new Date(2026, 4, 10),
-  new Date(2026, 4, 22), new Date(2026, 4, 23), new Date(2026, 4, 24),
-  new Date(2026, 5, 5),  new Date(2026, 5, 6),  new Date(2026, 5, 7),
-  new Date(2026, 5, 19), new Date(2026, 5, 20), new Date(2026, 5, 21),
+  // Mai 2026
+  new Date(2026, 4, 1),  new Date(2026, 4, 2),  new Date(2026, 4, 3), // 1/2/3 Mai
+  new Date(2026, 4, 8),  new Date(2026, 4, 9),  new Date(2026, 4, 10), // 8/9/10 Mai
+  new Date(2026, 4, 22), new Date(2026, 4, 23), new Date(2026, 4, 24), // 22/23/24 Mai
+  // Juin 2026
+  new Date(2026, 5, 5),  new Date(2026, 5, 6),  new Date(2026, 5, 7), // 5/6/7 Juin
+  new Date(2026, 5, 19), new Date(2026, 5, 20), new Date(2026, 5, 21), // 19/20/21 Juin
 ];
 
 const isSameDay = (a: Date, b: Date) =>
@@ -58,9 +60,10 @@ const ReservationPage = () => {
   const depositAmount = Math.round(totalPrice * 0.3);
 
   const handleApplyPromo = () => {
-    if (promoCode.toUpperCase() === "BIENVENUE100" || promoCode.toUpperCase() === "PROMO100") {
+    const code = promoCode.toUpperCase().trim();
+    if (code === "BIENVENUE100" || code === "PROMO100" || code === "SB100") {
       setDiscount(100);
-      toast({ title: "Code promo appliqué", description: "Une réduction a été appliquée à votre demande.", variant: "default" });
+      toast({ title: "Code promo appliqué", description: "Une réduction de 100€ a été appliquée à votre demande.", variant: "default" });
     } else {
       setDiscount(0);
       toast({ title: "Code invalide", description: "Ce code promo n'est pas valide ou a expiré.", variant: "destructive" });
@@ -174,7 +177,7 @@ const ReservationPage = () => {
                         disabled={(date) => {
                           if (!isDateAllowed(date)) return true;
                           const d = date.toISOString().split('T')[0];
-                          const spots = availability[d] !== undefined ? availability[d] : 13;
+                          const spots = availability[d] !== undefined ? availability[d] : 16;
                           return spots < formData.participants;
                         }}
                         modifiers={{ available: ALLOWED_DATES }}
@@ -333,13 +336,27 @@ const ReservationPage = () => {
                   </div>
 
                   {formData.startDate && (
-                    <div className="pt-6 border-t border-border">
-                      <p className="text-sm text-muted-foreground uppercase tracking-widest mb-1">Arrivée prévue</p>
-                      <p className="text-foreground">
-                        {new Date(formData.startDate).toLocaleDateString("fr-FR", {
-                          weekday: "long", day: "numeric", month: "long", year: "numeric"
-                        })}
-                      </p>
+                    <div className="pt-6 border-t border-border space-y-4">
+                      <div>
+                        <p className="text-sm text-muted-foreground uppercase tracking-widest mb-1">Arrivée (Vendredi)</p>
+                        <p className="text-foreground font-medium">
+                          {new Date(formData.startDate).toLocaleDateString("fr-FR", {
+                            day: "numeric", month: "long", year: "numeric"
+                          })}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground uppercase tracking-widest mb-1">Départ (Dimanche)</p>
+                        <p className="text-foreground font-medium">
+                          {(() => {
+                            const date = new Date(formData.startDate);
+                            date.setDate(date.getDate() + 2);
+                            return date.toLocaleDateString("fr-FR", {
+                              day: "numeric", month: "long", year: "numeric"
+                            });
+                          })()}
+                        </p>
+                      </div>
                     </div>
                   )}
 

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export const SejoursSection = () => {
   return (
@@ -53,10 +54,10 @@ export const SejoursSection = () => {
               avec tous les contours de la vie intérieure. »
             </p>
             <p className="font-serif text-lg">Saint-Exupéry</p>
-            <div className="pt-8">
-              <a href="#programme" className="inline-block border border-white text-white px-8 py-3 uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-300">
-                Découvrir
-              </a>
+            <div className="pt-8 text-center">
+              <Link to="/reservation" className="inline-block border border-white text-white px-8 py-3 uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-300">
+                Réserver mon séjour
+              </Link>
             </div>
           </motion.div>
         </div>

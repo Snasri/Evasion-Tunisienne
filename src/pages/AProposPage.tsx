@@ -13,6 +13,7 @@ import team2 from "@/assets/team-2.jpg";
 import team3 from "@/assets/team-3.jpg";
 import team4 from "@/assets/team-4.jpg";
 import team5 from "@/assets/team-5.jpg";
+import ventouses from "@/assets/soins-ventouses.png";
 
 const team = [
   {
@@ -212,11 +213,11 @@ const AProposPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
               { src: venueExterior, alt: "Extérieur" },
+              { src: ventouses, alt: "Soins aux ventouses" },
               { src: venuePool, alt: "Piscine" },
               { src: venueSeaview, alt: "Vue mer" },
               { src: maree1, alt: "Chambre 1" },
               { src: maree2, alt: "Chambre 2" },
-              { src: maree3, alt: "Espace détente" },
             ].map((img, index) => (
               <motion.div
                 key={img.alt + index}

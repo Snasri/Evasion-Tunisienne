@@ -17,7 +17,7 @@ router.get('/sessions/availability', async (req, res) => {
         
         const availability = {};
         Object.keys(grouped).forEach(date => {
-            availability[date] = Math.max(0, 13 - grouped[date]);
+            availability[date] = Math.max(0, 16 - grouped[date]);
         });
         res.json(availability);
     } catch (error) {
@@ -39,7 +39,7 @@ router.post('/reservations', async (req, res) => {
         const startOfDay = new Date(dateObj.setHours(0,0,0,0));
         const endOfDay = new Date(dateObj.setHours(23,59,59,999));
 
-        // Validation max 13
+        // Validation max 16
         const existing = await prisma.reservation.findMany({
             where: { 
                 date: { gte: startOfDay, lte: endOfDay },
@@ -47,7 +47,7 @@ router.post('/reservations', async (req, res) => {
             }
         });
         const total = existing.reduce((sum, r) => sum + r.participants, 0);
-        if (total + parseInt(participants, 10) > 13) {
+        if (total + parseInt(participants, 10) > 16) {
             return res.status(400).json({ error: 'Session complête ou nombre de places insuffisant' });
         }
 
