@@ -94,7 +94,7 @@ const StagesPage = () => {
                 <p className="text-sm text-muted-foreground uppercase tracking-widest mb-4">Investissement pour soi</p>
                 <div className="flex items-baseline gap-4 mb-8">
                   <span className="font-serif text-5xl text-primary">{prog.price}€</span>
-                  <span className="text-muted-foreground italic">par personne (Tout inclus)</span>
+                  <span className="text-muted-foreground italic">par personne (Tout inclus, hors vols)</span>
                 </div>
                 
                 <Link 
