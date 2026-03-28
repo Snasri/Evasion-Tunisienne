@@ -7,7 +7,7 @@ export const evasionTunisienne = {
   shortDuration: "3 jours / 2 nuits",
   duration: "Du vendredi au dimanche",
   price: 1190,
-  priceDetails: "Séjour tout inclus",
+  priceDetails: "Séjour tout inclus (hors vols)",
   image: spaTreatment,
   excerpt:
     "Un week-end premium en Tunisie pour relâcher le stress, récupérer en douceur et repartir recentré.",
