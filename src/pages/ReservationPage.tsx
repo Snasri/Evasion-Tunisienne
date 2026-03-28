@@ -364,8 +364,8 @@ const ReservationPage = () => {
                   )}
 
                   <div className="pt-6 border-t border-border space-y-4">
-                    <div className="flex justify-between items-center text-muted-foreground">
-                      <span>{formData.participants} Personne(s) × {prog.price}€</span>
+                    <div className="flex justify-between items-center text-muted-foreground italic text-xs">
+                      <span>{formData.participants} Personne(s) × {prog.price}€ (vols non inclus)</span>
                       <span>{basePrice}€</span>
                     </div>
 
