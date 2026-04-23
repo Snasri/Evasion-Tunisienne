@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import centerInterior from "@/assets/center-interior.png";
+import massageSoins from "@/assets/massage-soins.jpg";
 
 const features = [
   { number: "500+", label: "Clients satisfaits" },
@@ -23,8 +23,8 @@ export function AboutPreviewSection() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-elevated">
               <img
-                src={centerInterior}
-                alt="Intérieur du centre Max Care Wellness"
+                src={massageSoins}
+                alt="Soin massage Max Care Wellness"
                 className="w-full h-[500px] object-cover"
               />
             </div>

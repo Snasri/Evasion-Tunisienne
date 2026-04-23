@@ -85,7 +85,6 @@ const ContactPage = () => {
                       <h3 className="font-serif text-xl mb-2 text-foreground">Téléphone & Email</h3>
                       <div className="space-y-1 text-muted-foreground">
                         <p><a href="https://wa.me/21622334455" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">WhatsApp : +216 22 334 455</a></p>
-                        <p><a href="mailto:contact@maxcare-wellness.com" className="hover:text-primary transition-colors">contact@maxcare-wellness.com</a></p>
                       </div>
                     </div>
                     <div>
