@@ -68,33 +68,50 @@ const ContactPage = () => {
               transition={{ duration: 0.8 }}
               className="space-y-16"
             >
-              <div>
-                <h2 className="font-serif text-3xl text-primary mb-8">Coordonnées</h2>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="font-serif text-xl mb-2 text-foreground">Adresse</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      La Marée Village<br />
-                      Raf Raf, Bizerte<br />
-                      Tunisie
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-serif text-xl mb-2 text-foreground">Téléphone & Email</h3>
-                    <div className="space-y-1 text-muted-foreground">
-                      <p><a href="tel:+33123456789" className="hover:text-primary transition-colors">+33 1 23 45 67 89</a></p>
-                      <p><a href="mailto:contact@maxcare-wellness.com" className="hover:text-primary transition-colors">contact@maxcare-wellness.com</a></p>
+              <div className="space-y-10">
+                {/* Contact Tunisie */}
+                <div>
+                  <h2 className="font-serif text-3xl text-primary mb-6">Contact Tunisie</h2>
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="font-serif text-xl mb-2 text-foreground">Adresse</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        La Marée Village<br />
+                        Raf Raf, Bizerte<br />
+                        Tunisie
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-xl mb-2 text-foreground">Téléphone & Email</h3>
+                      <div className="space-y-1 text-muted-foreground">
+                        <p><a href="https://wa.me/21622334455" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">WhatsApp : +216 22 334 455</a></p>
+                        <p><a href="mailto:contact@maxcare-wellness.com" className="hover:text-primary transition-colors">contact@maxcare-wellness.com</a></p>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-xl mb-2 text-foreground">Horaires</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Lun - Ven : 9h00 - 18h00<br />
+                        Sam : 9h00 - 13h00
+                      </p>
                     </div>
                   </div>
-                  
-                  <div>
-                    <h3 className="font-serif text-xl mb-2 text-foreground">Horaires</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Lun - Ven : 9h00 - 18h00<br />
-                      Sam : 9h00 - 13h00
-                    </p>
+                </div>
+
+                {/* Séparateur */}
+                <div className="w-16 h-[1px] bg-primary/30"></div>
+
+                {/* Contact France */}
+                <div>
+                  <h2 className="font-serif text-3xl text-primary mb-6">Contact France</h2>
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="font-serif text-xl mb-2 text-foreground">Serge Dessel</h3>
+                      <div className="space-y-1 text-muted-foreground">
+                        <p><a href="tel:+33661956573" className="hover:text-primary transition-colors">+33 (0)6 61 95 65 73</a></p>
+                        <p><a href="mailto:serge.dessel@protonmail.com" className="hover:text-primary transition-colors">serge.dessel@protonmail.com</a></p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

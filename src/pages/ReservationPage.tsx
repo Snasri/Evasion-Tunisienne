@@ -14,8 +14,6 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 const ALLOWED_DATES = [
   // Mai 2026
-  new Date(2026, 4, 1),  new Date(2026, 4, 2),  new Date(2026, 4, 3), // 1/2/3 Mai
-  new Date(2026, 4, 8),  new Date(2026, 4, 9),  new Date(2026, 4, 10), // 8/9/10 Mai
   new Date(2026, 4, 22), new Date(2026, 4, 23), new Date(2026, 4, 24), // 22/23/24 Mai
   // Juin 2026
   new Date(2026, 5, 5),  new Date(2026, 5, 6),  new Date(2026, 5, 7), // 5/6/7 Juin
